@@ -2,6 +2,7 @@
 
 package com.example.githubrepoapp.Screens.Details
 
+import AppBar
 import android.health.connect.datatypes.Device
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -28,6 +29,7 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -45,6 +47,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.githubrepoapp.R
+
 import kotlin.io.encoding.Base64
 
 @Composable
@@ -53,7 +56,10 @@ fun Details(
 
 ) {
 
-    Modifier.fillMaxHeight()
+    
+
+    Modifier
+        .fillMaxHeight()
         .fillMaxSize()
         .background(MaterialTheme.colorScheme.primaryContainer)
 
@@ -63,26 +69,7 @@ Column(
 
 
 ) {
-    CenterAlignedTopAppBar(
-
-        colors = TopAppBarDefaults.topAppBarColors(
-//                containerColor = MaterialTheme.colorScheme.primaryContainer,
-            titleContentColor = MaterialTheme.colorScheme.primary,
-            containerColor = Color.White
-        ),
-        title = {
-            Text("Details", color = Color.Black, fontWeight = FontWeight.Bold )
-
-        },
-        navigationIcon = {
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                contentDescription = "back"
-            )
-        },
-
-
-        );
+AppBar(title = "Details", showBackArrow =true )
 
 
     Column(
@@ -113,9 +100,9 @@ Column(
         ) {
 
 
-            DetailContaint("2563",ImageVector.vectorResource(id = R.drawable.baseline_star_24),Color.Yellow)
-            DetailContaint("Python",ImageVector.vectorResource(id = R.drawable.baseline_circle_24),Color.Blue)
-            DetailContaint("356",ImageVector.vectorResource(id = R.drawable.baseline_share_24),null)
+            DetailItem("2563",ImageVector.vectorResource(id = R.drawable.baseline_star_24),Color.Yellow)
+            DetailItem("Python",ImageVector.vectorResource(id = R.drawable.baseline_circle_24),Color.Blue)
+            DetailItem("356",ImageVector.vectorResource(id = R.drawable.baseline_share_24),null)
 
 
         }
@@ -134,7 +121,8 @@ Column(
 
 
         TextButton(onClick = { /*TODO*/ },
-            Modifier.padding(top = 305.dp)
+            Modifier
+                .padding(top = 305.dp)
                 .background(Color.Blue)
                 .width(300.dp)
                 .height(40.dp)
@@ -154,7 +142,7 @@ Column(
 }
 
 @Composable
-private fun DetailContaint(text: String,image:ImageVector,color:Color?) {
+ fun DetailItem(text: String,image:ImageVector,color:Color?) {
     Text(
         text = text,
         fontSize = MaterialTheme.typography.bodyMedium.lineHeight,
@@ -166,7 +154,9 @@ private fun DetailContaint(text: String,image:ImageVector,color:Color?) {
     Icon(
 
 
-        modifier = Modifier.padding(end= 20.dp , start = 5.dp),
+        modifier = Modifier
+            .padding(end = 20.dp, start = 5.dp)
+            .size(25.dp),
 
         imageVector = image,
         contentDescription = "Star",

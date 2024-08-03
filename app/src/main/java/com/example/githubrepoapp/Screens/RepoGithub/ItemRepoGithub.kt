@@ -29,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.githubrepoapp.R
+import com.example.githubrepoapp.Screens.Details.Details
 
 @Composable
 fun ItemRepoGithub(
@@ -40,9 +41,10 @@ fun ItemRepoGithub(
         .fillMaxSize(1f)
         .fillMaxWidth(1f)
         .background(color = Color.White)
+        .clip(shape = CircleShape)
 Row (
     modifier = Modifier
-        .border(BorderStroke(2.dp,Color.Gray), shape = CircleShape)
+//        .border(BorderStroke(2.dp,Color.Gray), shape = CircleShape)
 
         .padding(end = 20.dp),
     
@@ -89,6 +91,7 @@ Row (
 //        modifier = Modifier.padding(10.dp)
 
     )
+
 
 
 }
